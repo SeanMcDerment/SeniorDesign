@@ -6,7 +6,7 @@ from sendgrid.helpers.mail import Mail
 app = Flask(__name__)
 
 # Your SendGrid API key
-SENDGRID_API_KEY = ''
+SENDGRID_API_KEY = '' # Put API Key Here
 
 sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
 
