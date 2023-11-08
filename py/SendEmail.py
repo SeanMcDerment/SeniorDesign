@@ -17,7 +17,7 @@ def index():
 @app.route('/send-email', methods=['POST'])
 def send_email():
     to_email = request.form['to']
-    sender_email = 'CybersenseTestEmail@gmail.com'  # Replace with your email
+    sender_email = 'CybersenseTestEmail@gmail.com' 
     subject = request.form['subject']
     message = request.form['message']
 
