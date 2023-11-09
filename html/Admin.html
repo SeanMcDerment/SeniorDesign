@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="style admin.css">
     <style>
         header {
             text-align: center;
@@ -29,6 +29,43 @@
         </nav>
     </header>
     <h2>Admin Page</h2>
-    <p>Welcome to the admin page. Manage your content here.</p>
+  
+  <div class="container">
+  <form action="#" method="post">
+    <table>
+      <thead>
+        <tr>
+          <th>Source Email</th>
+          <th>Destination Email</th>
+          <th>Time Stamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- This row can be duplicated for each entry that needs to be approved/denied -->
+        <tr>
+          <td>jane.doe@example.com</td>
+          <td>john.smith@example.net</td>
+          <td>10:26 AM 11/9/23</td>
+          <td>
+            <input type="submit" name="action" value="Approve" class="button approve">
+            <input type="submit" name="action" value="Deny" class="button deny">
+          </td>
+        </tr>
+        <!-- Repeat rows as needed -->
+		
+		 <tr>
+          <td><!-- Source Email Data --></td>
+          <td><!-- Destination Email Data --></td>
+          <td><!-- Time Stamp Data --></td>
+          <td>
+            <input type="submit" name="action" value="Approve" class="button approve">
+            <input type="submit" name="action" value="Deny" class="button deny">
+          </td>
+        </tr>
+		
+      </tbody>
+    </table>
+  </form>
+</div>
 </body>
 </html>

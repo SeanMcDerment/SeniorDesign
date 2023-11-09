@@ -16,6 +16,29 @@
             display: inline;
             margin-right: 20px;
         }
+		
+		.container {
+    margin: 20px;
+  }
+
+  .dropdown-container,
+  .text-fields-container {
+    margin-bottom: 10px;
+  }
+
+  .small-text-field {
+    width: 200px;
+  }
+
+  .large-text-field {
+    width: 100%;
+    height: 100px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 5px 10px;
+  }
     </style>
 </head>
 <body>
@@ -29,6 +52,43 @@
         </nav>
     </header>
     <h2>Create Page</h2>
-    <p>Welcome to the create page. Add new entries here.</p>
+   <div class="container">
+  <div class="dropdown-container">
+    <!-- First dropdown menu -->
+    <select name="dropdown1" id="dropdown1">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+      <!-- Add more options here -->
+    </select>
+
+    <!-- Second dropdown menu -->
+    <select name="dropdown2" id="dropdown2">
+      <option value="optionA">Option A</option>
+      <option value="optionB">Option B</option>
+      <option value="optionC">Option C</option>
+      <!-- Add more options here -->
+    </select>
+
+    <!-- Button below dropdown menus -->
+    <button type="button" id="dropdownButton">Submit</button>
+  </div>
+
+  <div class="text-fields-container">
+    <!-- Small text field -->
+    <input type="text" id="smallTextField" class="small-text-field" placeholder="Small Text Field">
+
+    <!-- Large text field -->
+    <textarea id="largeTextField" class="large-text-field" placeholder="Large Text Field"></textarea>
+
+    <!-- Button below text fields -->
+    <button type="button" id="textFieldButton">Send</button>
+  </div>
+</div>
+
+<script>
+// You can put your JavaScript here to handle button clicks or other events
+</script>
+
 </body>
 </html>
