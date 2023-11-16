@@ -17,9 +17,38 @@ def index():
 @app.route('/send-email', methods=['POST'])
 def send_email():
     to_email = request.form['to']
-    sender_email = 'CybersenseTestEmail@gmail.com' 
-    subject = request.form['subject']
-    message = request.form['message']
+    sender_email = 'CybersenseTestEmail@gmail.com'      
+    malicious_intent = request.form['MaliciousIntent']
+    social_engineering_tactic = request.form['SocialEngineeringTatic']
+
+    subject = ""
+    message = ""
+# Prompts
+    if malicious_intent == 'harvesting credentials':
+        subject = 'Urgent: Verify Your Account Information'
+        message = 'Dear User, it is imperative to confirm your account credentials immediately.'
+
+    elif malicious_intent == 'malicious attachment':
+        subject = 'Important Document Attached'
+        message = 'Please review the attached document. Your prompt attention is required.'
+
+    elif malicious_intent == 'gathering information':
+        subject = 'Request for Information'
+        message = 'We require some information. Kindly provide it at your earliest convenience.'
+
+
+    if social_engineering_tactic == 'urgency':
+        subject = 'Urgent: ' + subject
+        message = 'URGENT: ' + message
+
+    elif social_engineering_tactic == 'scarcity':
+        subject = 'Last Chance: ' + subject
+        message = 'Limited availability, act now. The document will be removed soon.'
+
+    elif social_engineering_tactic == 'familiarity':
+        subject = 'For Your Attention: ' + subject
+        message = 'As discussed earlier, kindly find the requested document.'
+
 
     message = Mail(
         from_email=sender_email,
@@ -38,3 +67,4 @@ def send_email():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
