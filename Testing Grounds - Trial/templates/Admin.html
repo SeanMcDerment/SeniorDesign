@@ -1,0 +1,51 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleadmin.css') }}">
+
+</head>
+<body>
+    <nav>   
+        <div class="logo">CyberSense</div>
+        <div class="nav-items">
+            <a href="{{ url_for('home') }}"><button type="button">Go to Home</button></a>
+            <a href="{{ url_for('leaderboard') }}"><button type="button">Go to Leaderboard</button></a>
+            <a href="{{ url_for('index') }}"><button type="button">Send Email</button></a>
+        </div>
+    </nav>>
+    <h1>Admin Page</h1>
+  
+    <div class="container">
+        <form action="/admin" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recipient Email</th>
+                        <th>Sender Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for email in pending_emails %}
+                    <tr>
+                        <td>{{ email['to_email'] }}</td>
+                        <td>{{ email['sender_email'] }}</td>
+                        <td>{{ email['subject'] }}</td>
+                        <td>{{ email['message'] }}</td>
+                        <td>
+                            <input type="submit" name="action" value="Approve" class="button approve">
+                            <input type="submit" name="action" value="Deny" class="button deny">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

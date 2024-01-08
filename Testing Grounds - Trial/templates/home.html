@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homestyles.css') }}">
+
+</head>
+<body>
+    <nav>   
+        <div class="logo">CyberSense</div>
+        <div class="nav-items">
+            <a href="{{ url_for('index') }}"><button type="button">Create a Phish</button></a>
+            <a href="{{ url_for('leaderboard') }}"><button type="button">Leaderboard</button></a>
+            <a href="{{ url_for('admin') }}"><button type="button">Admin Portal</button></a>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-container">
+            <div class="column-left">
+                <h1>Cybersecurity  Phishing Training</h1>
+                <p> A more entertaining way to teach, manage and monitor all you 
+                    phishing training needs. 
+                </p>
+                <a href="{{ url_for('index') }}"><button type="button">Create a Phish</button></a>
+            </div>
+            <div>
+                <div class="column-right">
+                    <img
+                    src="\static\cybersensehomepic.jpg"
+                    alt="illustration"
+                    class="hero-image"/>
+                </div>
+            </div>
+        
+        </div>
+        
+
+    </section>
+        
+    </div>
+
+    <script>
+        function buttonClick(buttonNumber) {
+            // Handle button click logic here
+            alert("Button " + buttonNumber + " clicked!");
+        }
+    </script>
+
+</body>
+</html>

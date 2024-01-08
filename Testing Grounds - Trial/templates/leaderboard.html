@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='leaderboard.css') }}">
+</head>
+<body>
+    <nav>   
+        <div class="logo">CyberSense</div>
+        <div class="nav-items">
+            <a href="{{ url_for('home') }}"><button type="button">Go to Home</button></a>
+            <a href="{{ url_for('index') }}"><button type="button">Go to Create</button></a>
+            <a href="{{ url_for('admin') }}"><button type="button">Go to Admin</button></a>
+        </div>
+    </nav>
+    <h1>Leaderboard</h1>
+
+    <form method="get" action="{{ url_for('leaderboard') }}">
+        <label for="user">Filter by User:</label>
+        <input type="text" name="user">
+        <br>
+        <label for="department">Filter by Department:</label>
+        <input type="text" name="department">
+        <br>
+        <button type="submit">Apply Filters</button>
+    </form>
+
+    {% if department_averages %}
+        <h2>Department Averages</h2>
+        <ul>
+            {% for department, average in department_averages %}
+                <li>{{ department }}: {{ average }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Department</th>
+            <th>Score</th>
+        </tr>
+        {% for entry in leaderboard %}
+            <tr>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.department }}</td>
+                <td>{{ entry.score }}</td>
+            </tr>
+        {% endfor %}
+    </table> 
+</body>
+</html>

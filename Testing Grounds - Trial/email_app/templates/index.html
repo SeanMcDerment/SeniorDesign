@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Email</title>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form action="/send-email" method="post">
+        <label for="MaliciousIntent">Malicious Intent:</label><br>
+        <select name="MaliciousIntent" id="maliciousIntent">
+            <option value="harvesting credentials">Harvesting credentials</option>
+            <option value="malicious attachment">Malicious attachment</option>
+            <option value="gathering information">Gathering information</option>
+        </select><br><br>
+
+        <label for="SocialEngineeringTatic">Social Engineering Tactic:</label><br>
+        <select name="SocialEngineeringTatic" id="socialEngineeringTactic">
+            <option value="urgency">Urgency</option>
+            <option value="scarcity">Scarcity</option>
+            <option value="familiarity">Familiarity</option>
+        </select><br><br>
+
+        <input type="button" value="Generate" onclick="generateContent()"><br><br>
+        
+        <label for="to">To (Recipient's Email):</label><br>
+        <input type="email" id="to" name="to" required><br><br>
+        
+        <label for="subject">Subject:</label><br>
+        <textarea id="subject" name="subject" rows="4" cols="50" required></textarea><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="8" cols="50" required></textarea><br><br>
+        <input type="submit" value="Send Email">
+        
+        <a href="{{ url_for('leaderboard') }}"><button type="button">Go to Leaderboard</button></a>
+    </form>
+
+    <script>
+        function generateContent() {
+            var maliciousIntent = document.getElementById('maliciousIntent').value;
+            var socialEngineeringTactic = document.getElementById('socialEngineeringTactic').value;
+
+            var subject = "";
+            var message = "";
+
+            // malicious intent messages
+            if (maliciousIntent === 'harvesting credentials') {
+                subject = 'Verify Your Account Information';
+                message = 'Dear User, it is imperative to confirm your account credentials immediately.';
+            } else if (maliciousIntent === 'malicious attachment') {
+                subject = 'Important Document Attached';
+                message = 'Please review the attached document. Your prompt attention is required.';
+            } else if (maliciousIntent === 'gathering information') {
+                subject = 'Request for Information';
+                message = 'We require some information. Kindly provide it at your earliest convenience.';
+            }
+            // tatic messages
+            if (socialEngineeringTactic === 'urgency') {
+                subject = 'Urgent: ' + subject;
+                message = 'URGENT: ' + message;
+            } else if (socialEngineeringTactic === 'scarcity') {
+                subject = 'Last Chance: ' + subject;
+                message = 'Limited availability, act now. The document will be removed soon.';
+            } else if (socialEngineeringTactic === 'familiarity') {
+                subject = 'For Your Attention: ' + subject;
+                message = 'As discussed earlier, kindly find the requested document.';
+            }
+
+            
+            document.getElementById('subject').value = subject;
+            document.getElementById('message').value = message;
+        }
+    </script>
+</body>
+</html>

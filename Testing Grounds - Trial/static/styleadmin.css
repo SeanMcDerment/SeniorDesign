@@ -1,0 +1,157 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* Title*/
+h1 {
+  color: #000;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 0rem 2rem;
+}
+/* Names of text boxes*/
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 0rem 2rem;
+}
+nav {
+  height: 80px;
+  background: #018DF9;
+  display: flex;
+  justify-content: flex-start; /* Adjusted justify-content */
+  align-items: center;
+  padding: 0rem 2rem 0rem 2rem; /* Updated padding values */
+}
+  
+  /*hex blue code: 018DF9*/
+  /*Top Left Title*/
+  .logo{
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+  }
+  /*text box heading*/
+label {
+  font-size: 1rem;
+  margin-bottom: 5px;    
+  color: #000;
+}
+
+select, textarea, input {
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 20%;
+  align-items: left;
+  box-sizing: border-box;
+}
+
+input[type="submit"], button {
+  padding: 1rem 3rem;
+  font-size: 1.25rem;
+  border: none;
+  color: #ffffff;
+  background: #018DF9;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+button {
+  background: #018DF9;
+  color: #000;
+}
+/* text nav bar color when hovering*/
+input[type="submit"]:hover, button:hover {
+  background: #ffffff;
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  margin-top: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.approve {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.deny {
+  background-color: #f44336;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
