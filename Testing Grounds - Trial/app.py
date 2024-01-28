@@ -12,7 +12,7 @@ from leaderboard_app.leaderboard_utils import read_data, create_leaderboard, cal
    
 
 
-app = Flask(__name__, template_folder=r'C:\Users\mcder\Desktop\Testing Grounds - Trial\templates', static_folder='static')
+app = Flask(__name__, template_folder=r'C:\Users\nxiao\Desktop\Testing Grounds - Trial\templates', static_folder='static')
 
 
 # SendGrid API key
@@ -110,7 +110,7 @@ def send_approved_emails():
 
 @app.route('/leaderboard/')
 def leaderboard():
-    file_path = r'c:\Users\mcder\Desktop\Cybersense_Leaderboard\data\leaderboard_data.csv'
+    file_path = r'c:\Users\nxiao\Desktop\Cybersense_Leaderboard\data\leaderboard_data.csv'
     data = read_data(file_path)
 
     # Apply filters
