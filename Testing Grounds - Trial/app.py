@@ -20,7 +20,7 @@ from leaderboard_app.leaderboard_utils import read_data, create_leaderboard, cal
 
 app = Flask(__name__, template_folder=r'C:\Users\mcder\Desktop\Testing Grounds - Post Email\templates', static_folder='static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-app.config['SECRET_KEY'] ='7Loi3RNcylXFwE4QsE3x8iNSuSa'
+app.config['SECRET_KEY'] ='Hidden'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -38,7 +38,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # SendGrid API key
-SENDGRID_API_KEY = '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'
+SENDGRID_API_KEY = 'Hidden'
 
 sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
 
