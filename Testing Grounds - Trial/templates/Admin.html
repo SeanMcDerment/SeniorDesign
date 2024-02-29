@@ -15,7 +15,7 @@
             <a href="{{ url_for('leaderboard') }}"><button type="button">Go to Leaderboard</button></a>
             <a href="{{ url_for('index') }}"><button type="button">Send Email</button></a>
         </div>
-    </nav>>
+    </nav>
     <h1>Admin Page</h1>
   
     <div class="container">
@@ -27,6 +27,8 @@
                         <th>Sender Email</th>
                         <th>Subject</th>
                         <th>Message</th>
+                        <th>Attachment</th> 
+
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -36,7 +38,8 @@
                         <td>{{ email['to_email'] }}</td>
                         <td>{{ email['sender_email'] }}</td>
                         <td>{{ email['subject'] }}</td>
-                        <td>{{ email['message'] }}</td>
+                        <td>{{ email['message'].plain_text_content }}</td>
+                        <td>{{ 'Yes' if email['message'].attachment else 'No' }}</td> 
                         <td>
                             <input type="submit" name="action" value="Approve" class="button approve">
                             <input type="submit" name="action" value="Deny" class="button deny">
@@ -48,4 +51,5 @@
         </form>
     </div>
 </body>
+</html>
 </html>

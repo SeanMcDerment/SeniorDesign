@@ -16,27 +16,37 @@
         </div>
     </nav>
     <h1>Create Your Phish</h1>
-    <form action="/send-email" method="post">
+    <form action="/send-email" method="post" enctype="multipart/form-data">
         <label for="MaliciousIntent">Malicious Intent:</label><br>
         <select name="MaliciousIntent" id="maliciousIntent">
             <option value="harvesting credentials">Harvesting credentials</option>
             <option value="malicious attachment">Malicious attachment</option>
             <option value="gathering information">Gathering information</option>
+        </select><br><br>
+        
         </select><br>
 
         <div id="maliciousIntentMessage"></div>
-       
+
         <br>
+
         <label for="SocialEngineeringTatic">Social Engineering Tactic:</label><br>
         <select name="SocialEngineeringTatic" id="socialEngineeringTactic">
             <option value="urgency">Urgency</option>
             <option value="scarcity">Scarcity</option>
             <option value="familiarity">Familiarity</option>
+        </select><br><br>
+        
         </select><br>
 
         <div id="socialEngineeringTacticMessage"></div>
 
         <br>
+        
+        <label for="attachment">Attachment:</label><br>
+        <input type="file" id="attachment" name="attachment" accept=".pdf, .doc, .docx, .txt" onchange="displayFileName()"><br><br>
+        <span id="filename"></span>
+
         <input type="button" value="Generate" onclick="generateContent()"><br><br>
         
         <label for="to">To (Recipient's Email):</label><br>
@@ -47,65 +57,112 @@
         
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="8" cols="50" required></textarea><br><br>
+        
         <input type="submit" value="Send Email">
         
     </form>
 
     <script>
-
-      
-
         function generateContent() {
             var maliciousIntent = document.getElementById('maliciousIntent').value;
             var socialEngineeringTactic = document.getElementById('socialEngineeringTactic').value;
 
-            var subject = "";
-            var message = "";
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
 
             var maliciousIntentMessage = document.getElementById('maliciousIntentMessage');
             var socialEngineeringTacticMessage = document.getElementById('socialEngineeringTacticMessage');
 
+            // Update the subject and message only if they are empty
+            if (!subject) {
+                if (maliciousIntent === 'harvesting credentials') {
+                    subject = 'Verify Your Account Information';
+                    maliciousIntentMessage.innerHTML = 'Harvesting Credentials: This option simulates an attack aimed at stealing user credentials so that they may use said information to gain unauthorized access to accounts.';
+                } else if (maliciousIntent === 'malicious attachment') {
+                    subject = 'Important Document Attached';
+                    maliciousIntentMessage.innerHTML = 'Malicious Attachment: This option simulates an attack aimed to trick a victim into opening a malicous attachment so that the attacker may install a unwanted program such as a keylogger or backdoor so to gain unautherized access to the computer.';
+                } else if (maliciousIntent === 'gathering information') {
+                    subject = 'Request for Information';
+                    maliciousIntentMessage.innerHTML = 'Gathering information: This option simulates an attack aimed at gathering important information from the victim such as username, passwords, or other important infomraitno that could be used to access accounts.';
+                }
 
-            
+                if (socialEngineeringTactic === 'urgency') {
+                    subject = 'Urgent: ' + subject;
+                    socialEngineeringTacticMessage.innerHTML = 'Urgency: Conveys a sense of imminent threat or time-sensitive opportunity so to manipulate the recipient into taking actions that they might not otherwise do.';
+                } else if (socialEngineeringTactic === 'scarcity') {
+                    subject = 'Last Chance: ' + subject;
+                    socialEngineeringTacticMessage.innerHTML = 'Scarcity: Conveys the idea that there is a limited quantity or a short window of opportunity available, and recipients must act immediately to secure it.';
+                } else if (socialEngineeringTactic === 'familiarity') {
+                    subject = 'For Your Attention: ' + subject;
+                    socialEngineeringTacticMessage.innerHTML = 'Familiarity: involves crafting phishing messages in a way that makes recipients believe they have a pre-existing relationship or connection with the sender or the content of the message. This tactic aims to lower the recipients guard by exploiting trust and familiarity.';
 
-            //
-            if (maliciousIntent === 'harvesting credentials') {
-                subject = 'Verify Your Account Information';
-                message = 'Dear User, it is imperative to confirm your account credentials immediately.';
-                maliciousIntentMessage.innerHTML = 'Harvesting Credentials: This option simulates an attack aimed at stealing user credentials so that they may use said information to gain unauthorized access to accounts.';
-
-            } else if (maliciousIntent === 'malicious attachment') {
-                subject = 'Important Document Attached';
-                message = 'Please review the attached document. Your prompt attention is required.';
-                maliciousIntentMessage.innerHTML = 'Malicious Attachment: This option simulates an attack aimed to trick a victim into opening a malicous attachment so that the attacker may install a unwanted program such as a keylogger or backdoor so to gain unautherized access to the computer.';
-
-            } else if (maliciousIntent === 'gathering information') {
-                subject = 'Request for Information';
-                message = 'We require some information. Kindly provide it at your earliest convenience.';
-                maliciousIntentMessage.innerHTML = 'Gathering information: This option simulates an attack aimed at gathering important information from the victim such as username, passwords, or other important infomraitno that could be used to access accounts.';
-
+                }
             }
 
-            if (socialEngineeringTactic === 'urgency') {
-                subject = 'Urgent: ' + subject;
-                message = 'URGENT: ' + message;
-                socialEngineeringTacticMessage.innerHTML = 'Urgency: Conveys a sense of imminent threat or time-sensitive opportunity so to manipulate the recipient into taking actions that they might not otherwise do.';
+            if (!message) {
+                if (maliciousIntent === 'harvesting credentials') {
+                    message = 'Dear User, it is imperative to confirm your account credentials immediately.';
+                } else if (maliciousIntent === 'malicious attachment') {
+                    message = 'Please review the attached document. Your prompt attention is required.';
+                } else if (maliciousIntent === 'gathering information') {
+                    message = 'We require some information. Kindly provide it at your earliest convenience.';
+                }
 
-            } else if (socialEngineeringTactic === 'scarcity') {
-                subject = 'Last Chance: ' + subject;
-                message = 'Limited availability, act now. The document will be removed soon.';
-                socialEngineeringTacticMessage.innerHTML = 'Scarcity: Conveys the idea that there is a limited quantity or a short window of opportunity available, and recipients must act immediately to secure it.';
-
-            } else if (socialEngineeringTactic === 'familiarity') {
-                subject = 'For Your Attention: ' + subject;
-                message = 'As discussed earlier, kindly find the requested document.';
-                socialEngineeringTacticMessage.innerHTML = 'Familiarity: involves crafting phishing messages in a way that makes recipients believe they have a pre-existing relationship or connection with the sender or the content of the message. This tactic aims to lower the recipients guard by exploiting trust and familiarity.';
-
+                if (socialEngineeringTactic === 'urgency') {
+                    message = 'URGENT: ' + message;
+                } else if (socialEngineeringTactic === 'scarcity') {
+                    message = 'Limited availability, act now. The document will be removed soon.';
+                } else if (socialEngineeringTactic === 'familiarity') {
+                    message = 'As discussed earlier, kindly find the requested document.';
+                }
             }
 
-            
+            // Set the updated values back to the input fields
             document.getElementById('subject').value = subject;
             document.getElementById('message').value = message;
+}
+
+
+        function displayFileName() {
+    // Display the selected filename
+    var fileInput = document.getElementById('attachment');
+    var filenameSpan = document.getElementById('filename');
+    filenameSpan.textContent = fileInput.files[0] ? fileInput.files[0].name : '';
+}
+
+
+function attachFile() {
+    // Get the file input 
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+
+   
+    fileInput.click();
+
+    
+    fileInput.addEventListener('change', function () {
+    
+        displayFileName();
+    });
+}
+
+
+
+
+
+        function showNotification(message) {
+            // Create a notification element
+            var notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+
+            // Append the notification to the body
+            document.body.appendChild(notification);
+
+            // Remove the notification after 3 seconds
+            setTimeout(function() {
+                document.body.removeChild(notification);
+            }, 3000);
         }
     </script>
 </body>

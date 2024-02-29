@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .signup-form {
+            width: 300px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .form-control input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+    padding:  1rem 3rem;
+    font-size: 1.25rem;
+    border: none;
+    color: #000;
+    background: #018DF9;
+    cursor: pointer;
+    border-radius: 50px;
+                    }
+                    
+    </style>
+</head>
+<body>
+ 
+<div class="signup-form">
+    <h2>Register</h2>
+    <form action="/register" method="post">
+        <div class="form-control">
+            <label for="name">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-control">
+            <label for="group">Group</label>
+            <input type="group" id="group" name="group" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+</html>
